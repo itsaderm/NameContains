@@ -1,0 +1,2 @@
+nameContains: 'superbiebel' # If the players name contains this (CASE SENSITIVE)
+command: 'ban {player} banned name!' # You can use {player} to replace the player who's name contains the above string
