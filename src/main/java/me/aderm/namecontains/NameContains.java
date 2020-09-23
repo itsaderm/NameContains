@@ -20,8 +20,22 @@ public class NameContains extends JavaPlugin implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        if(player.getName().contains(getConfig().getString("nameContains"))) {
-            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), getConfig().getString("command").replace("{player}", player.getName()));
+
+        if(getConfig().getBoolean("ignoreCase")) {
+            for(String names : getConfig().getStringList("nameContains")) {
+                if(player.getName().toLowerCase().contains(names)) {
+                    for(String commands : getConfig().getStringList("commands")) {
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), (commands).replace("{player}", player.getName()));
+                    }
+                }
+            }
+        }
+        for(String names : getConfig().getStringList("nameContains")) {
+            if(player.getName().contains(names)) {
+                for(String commands : getConfig().getStringList("commands")) {
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), (commands).replace("{player}", player.getName()));
+                }
+            }
         }
     }
 

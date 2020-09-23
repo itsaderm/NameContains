@@ -1,2 +1,7 @@
-nameContains: 'superbiebel' # If the players name contains this (CASE SENSITIVE)
-command: 'ban {player} banned name!' # You can use {player} to replace the player who's name contains the above string
+nameContains: # What words should be listened for?
+  - 'banned'
+  - 'word'
+commands: # The commands that should be ran upon seeing a player join with a name containing the above ({player} is for the player name)
+  - 'kick {player} banned name!' #
+
+ignoreCase: true # Should the case nameContains be case sensitive or no
